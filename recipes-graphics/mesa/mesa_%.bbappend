@@ -1,4 +1,5 @@
 PROVIDES_remove_tegra210 = "virtual/libgl virtual/libgles1 virtual/libgles2 virtual/libopenvg virtual/egl"
+PROVIDES_remove_tegra124 = "virtual/libgl virtual/libgles1 virtual/libgles2 virtual/libopenvg virtual/egl"
 
 python () {
     overrides = d.getVar("OVERRIDES", True).split(":")
