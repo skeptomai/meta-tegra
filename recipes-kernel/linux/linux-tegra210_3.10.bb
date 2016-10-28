@@ -11,8 +11,6 @@ L4T_VERSION = "l4t-r24.2"
 PV .= "+git${SRCPV}"
 SRCBRANCH = "patches-${L4T_VERSION}"
 SRCREV = "271164dd7765d467af54293409fd9a3fb449942e"
-KERNEL_REPO = "github.com/madisongh/linux-tegra.git"
-SRC_URI += "git://${KERNEL_REPO};branch=${SRCBRANCH}"
 SRC_URI += "file://defconfig"
 
 S = "${WORKDIR}/git"

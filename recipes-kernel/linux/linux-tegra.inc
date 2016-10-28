@@ -2,6 +2,8 @@ inherit kernel
 
 require recipes-kernel/linux/linux-dtb.inc
 
+KERNEL_REPO = "github.com/madisongh/linux-tegra.git"
+
 EXTRA_OEMAKE += 'LIBGCC=""'
 
 LOCALVERSION = "-${L4T_VERSION}"

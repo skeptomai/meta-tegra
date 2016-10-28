@@ -6,15 +6,17 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 require linux-tegra.inc
 
-SRC_URI += " \
-  http://developer.download.nvidia.com/embedded/L4T/r21_Release_v5.0/source/kernel_src.tbz2 \
+SRC_URI = " \
+  git://${KERNEL_REPO};branch=${SRCBRANCH} \
   file://defconfig \
 "
-
+PV .= "+git${SRCPV}"
+SRCBRANCH = "patches-${L4T_VERSION}"
+SRCREV = "${AUTOREV}"
 SRC_URI[md5sum] = "266f2159d8e4f301ac879fbc5615352d"
 SRC_URI[sha256sum] = "4b03c0937087e439fe2b93c537565116057e9289ee97240a4ce7895decb6a769"
 
-S = "${WORKDIR}/kernel"
+S = "${WORKDIR}/git"
 
 L4T_VERSION = "l4t-r21.5"
 
