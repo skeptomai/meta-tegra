@@ -12,7 +12,7 @@ PV .= "+git${SRCPV}"
 FILESEXTRAPATHS_prepend := "${THISDIR}/${BPN}-${@bb.parse.BBHandler.vars_from_file(d.getVar('FILE', False),d)[1]}:"
 EXTRA_OEMAKE += 'LIBGCC=""'
 
-L4T_VERSION_tegra186 = "l4t-r27.1"
+L4T_VERSION = "l4t-r28.1"
 LOCALVERSION = "-${L4T_VERSION}"
 
 SRCBRANCH = "patches-${L4T_VERSION}"
@@ -32,6 +32,7 @@ do_configure_prepend() {
 }
 
 KERNEL_ARGS_tegra186 = "fbcon=map:0 console=tty0 console=ttyS0,115200n8 memtype=0 video=tegrafb no_console_suspend=1 earlycon=uart8250,mmio32,0x03100000 gpt tegraid=18.1.2.0.0 tegra_keep_boot_clocks maxcpus=6 vpr_resize"
+KERNEL_ARGS_tegra210 = "fbcon=map:0 console=tty0 console=ttyS0,115200n8 ddr_die=2048M@2048M ddr_die=2048M@4096M section=256M memtype=0 vpr_resize usb_port_owner_info=0 lane_owner_info=0 emc_max_dvfs=0 touch_id=0@63 video=tegrafb no_console_suspend=1 debug_uartport=lsport,0 earlyprintk=uart8250-32bit,0x70006000 maxcpus=4 usbcore.old_scheme_first=1 lp0_vec=\${lp0_vec} nvdumper_reserved=\${nvdumper_reserved} core_edp_mv=1125 core_edp_ma=4000 gpt"
 
 generate_extlinux_conf() {
     install -d ${D}/${KERNEL_IMAGEDEST}/extlinux
@@ -59,4 +60,4 @@ do_install[postfuncs] += "generate_extlinux_conf"
 
 FILES_kernel-image += "/${KERNEL_IMAGEDEST}/extlinux"
 
-COMPATIBLE_MACHINE = "(tegra186)"
+COMPATIBLE_MACHINE = "(tegra186|tegra210)"
