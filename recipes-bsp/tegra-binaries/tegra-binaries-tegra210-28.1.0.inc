@@ -16,6 +16,10 @@ SRC_URI += "\
 S = "${TMPDIR}/work-shared/tegra-binaries-${PV}-${PR}/Linux_for_Tegra"
 B = "${WORKDIR}/build"
 
+do_preconfigure() {
+    cp ${WORKDIR}/xorg.conf ${WORKDIR}/*-daemon.* ${S}
+}
+
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 

@@ -11,10 +11,16 @@ SRC_URI += "\
     file://nvcamera-daemon.service \
     file://argus-daemon.init \
     file://argus-daemon.service \
+    file://tegra186-flash-helper.sh \
 "
 
 S = "${TMPDIR}/work-shared/tegra-binaries-${PV}-${PR}/Linux_for_Tegra"
 B = "${WORKDIR}/build"
+
+do_preconfigure() {
+    cp ${WORKDIR}/xorg.conf ${WORKDIR}/*-daemon.* ${S}
+    cp ${WORKDIR}/tegra186-flash-helper.sh ${S}
+}
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
