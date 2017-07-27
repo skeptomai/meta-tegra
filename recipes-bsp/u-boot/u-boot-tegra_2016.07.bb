@@ -9,12 +9,12 @@ LIC_FILES_CHKSUM = "file://Licenses/README;md5=a2c678cfd4a4d97135585cad908541c6"
 
 PROVIDES += "u-boot"
 DEPENDS += "dtc-native"
-DEPENDS_append_tegra186 = " tegra-flashtools-native"
+DEPENDS_append_tegra186 = " ${SOC_FAMILY}-flashtools-native"
 
 UBOOT_TEGRA_REPO ?= "github.com/madisongh/u-boot-tegra.git"
-SRCBRANCH ?= "l4t/l4t-r27.1"
+SRCBRANCH ?= "patches-l4t-r28.1"
 SRC_URI = "git://${UBOOT_TEGRA_REPO};branch=${SRCBRANCH}"
-SRCREV = "59719074f37c94ea01a18e9be31189ac3a5fec84"
+SRCREV = "0ce7ca286491e97a34d741bd92a57f2dcdc3033c"
 PV .= "+git${SRCPV}"
 
 S = "${WORKDIR}/git"
@@ -36,7 +36,7 @@ do_compile_append_tegra186() {
 		            rm -f $f
 			    ${STAGING_BINDIR_NATIVE}/tegra186-flash/mkbootimg \
 			        --kernel ${B}/${config}/${binary} --ramdisk ${B}/initrd --cmdline "" \
-			        --board "/dev/mmcblk0p12" --output $f
+			        --board "/dev/mmcblk0p1" --output $f
 			fi
 		    done
 		    unset k
