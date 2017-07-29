@@ -14,20 +14,21 @@ LIC_FILES_CHKSUM = "file://NvInfer.h;endline=48;md5=c019325b2fa9ba0eb1b404d686a4
 
 CUDAPATH ?= "/usr/local/cuda-${CUDA_VERSION}"
 
-S = "${WORKDIR}/var/nv-gie-repo-rc-cuda8.0-trt2.1-20170614"
+S = "${WORKDIR}/var/nv-gie-repo-ga-cuda8.0-trt2.1-20170614"
 B = "${WORKDIR}/build"
 
 do_configure() {
-    dpkg-deb --extract ${S}/libnvinfer3_3.0.1-1+cuda8.0_arm64.deb ${B}
-    dpkg-deb --extract ${S}/libnvinfer-dev_3.0.1-1+cuda8.0_arm64.deb ${B}
+    dpkg-deb --extract ${S}/libnvinfer3_3.0.2-1+cuda8.0_arm64.deb ${B}
+    dpkg-deb --extract ${S}/libnvinfer-dev_3.0.2-1+cuda8.0_arm64.deb ${B}
+    # for the LIC_FILES_CHKSUM check
     cp ${B}/usr/include/aarch64-linux-gnu/NvInfer.h ${S}/
 }
 do_populate_lic[depends] += "${PN}:do_configure"
 
 do_compile() {
-    patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvcaffe_parser.so.3.0.1
-    patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvinfer.so.3.0.1
-    patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.3.0.1
+    patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvcaffe_parser.so.3.0.2
+    patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvinfer.so.3.0.2
+    patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.3.0.2
 }
 
 do_install() {
