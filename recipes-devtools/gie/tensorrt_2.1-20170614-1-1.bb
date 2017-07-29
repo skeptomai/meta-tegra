@@ -29,6 +29,7 @@ do_compile() {
     patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvcaffe_parser.so.3.0.2
     patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvinfer.so.3.0.2
     patchelf --set-rpath "${CUDAPATH}/${baselib}" ${B}/usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.3.0.2
+    mv ${B}/usr/include/aarch64-linux-gnu/NvUtils.h ${B}/usr/src/tensorrt/samples/sampleCharRNN/
 }
 
 do_install() {
