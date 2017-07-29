@@ -21,16 +21,14 @@ do_configure() {
 }
 
 do_compile() {
-    sed -i -e's,jpeglib\.h,libjpeg-8b-tegra/jpeglib.h,' ${S}/include/NvJpeg*.h
+    :
 }
 
 do_install() {
     install -d ${D}${includedir}
     cp -R --preserve=mode,timestamps ${S}/argus/include/Argus ${D}${includedir}
     cp -R --preserve=mode,timestamps ${S}/argus/include/EGLStream ${D}${includedir}
-    install -m 0644 ${S}/include/*.h ${D}${includedir}/
-    install -d ${D}${includedir}/libjpeg-8b-tegra
-    install -m 0644 ${S}/include/libjpeg-8b/*.h ${D}${includedir}/libjpeg-8b-tegra/
+    install -m 0644 ${S}/include/nvbuf_utils.h ${D}${includedir}/
 }
 
 PACKAGES = "${PN}-dev ${PN}"
