@@ -13,7 +13,7 @@ SRC_URI += "\
 "
 SRC_URI_append_tegra186 = " file://tegra186-flash-helper.sh"
 
-S = "${TMPDIR}/work-shared/${SOC_FAMILY}/Linux_for_Tegra-${PV}-${PR}"
+S = "${TMPDIR}/work-shared/L4T-${SOC_FAMILY}-${PV}-${PR}/Linux_for_Tegra"
 B = "${WORKDIR}/build"
 
 do_preconfigure() {
