@@ -1,6 +1,6 @@
 SRC_URI = "http://developer2.download.nvidia.com/embedded/L4T/r28_Release_v1.0/BSP/source_release.tbz2;downloadfilename=tegra-sources-28.1.0.tbz2"
-SRC_URI[md5sum] = "ee0bd232143ee428c7d88ef3f2012726"
-SRC_URI[sha256sum] = "9b5f8b698f5bd948db89ccebbbc254c2e1e52bbb7f15739512d16b646a8e6135"
+SRC_URI[md5sum] = "b13f3e54a49483674ae2ef77dab1e0e5"
+SRC_URI[sha256sum] = "2d585b50acf6d8d86ed1a356531f20da953bca2d85e5227365f7823f59d088b3"
 
 unpack_tar_in_tar() {
     cd ${WORKDIR}
