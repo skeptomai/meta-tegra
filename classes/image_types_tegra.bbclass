@@ -181,6 +181,7 @@ tegraflash_create_flash_config_tegra186() {
 }
 
 BOOTFILES_tegra186 = "\
+    bmp.blob \
     bpmp.bin \
     camera-rtcpu-sce.bin \
     cboot.bin \
@@ -192,6 +193,7 @@ BOOTFILES_tegra186 = "\
     nvtboot_recovery.bin \
     nvtboot_recovery_cpu.bin \
     preboot_d15_prod_cr.bin \
+    slot_metadata.bin \
     spe.bin \
     tos.img \
     nvtboot.bin \
